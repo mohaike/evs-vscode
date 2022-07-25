@@ -1,0 +1,72 @@
+{
+    "name": "evs",
+	 "displayName": "EVS",
+	 "description": "emacs vscode server",
+	 "version": "0.0.2",
+    "publisher": "momo",
+    "icon": "evs_icon.jpg",
+	"license": "MIT",
+	 "repository": {
+		  "type": "git",
+		  "url": "https://gitee.com/momogo/evs.git"
+	 },
+	 "engines": {
+		  "vscode": "^1.69.0"
+	 },
+	 "categories": [
+		  "Other"
+	 ],
+	 "activationEvents": [
+        "onStartupFinished"
+	 ],
+	 "main": "./out/extension.js",
+	 "contributes": {
+		  "commands": [
+            {
+				"command": "evs.emacs",
+				"title": "Just Call Emacs"
+               },
+			   {
+				"command": "evs.emacs.callDire",
+				"title": "Call Emacs Dire"
+               },
+			   {
+				"command": "evs.emacs.readPosition",
+				"title": "EVS Read Position"
+               }
+		  ],
+        "configuration": {
+			   "type": "object",
+			   "title": "EVS",
+			   "properties": {
+				    "evs.emacsConfigHome": {
+					     "scope": "resource",
+					     "type": "string",
+					     "default": "/Users/momo/.emacs.d",
+					     "description": "你的Emacs配置文件路径"
+				    }
+            }
+        }
+	 },
+	 "scripts": {
+		  "vscode:prepublish": "npm run compile",
+		  "compile": "tsc -p ./",
+		  "watch": "tsc -watch -p ./",
+		  "pretest": "npm run compile && npm run lint",
+		  "lint": "eslint src --ext ts",
+		  "test": "node ./out/test/runTest.js"
+	 },
+	 "devDependencies": {
+		  "@types/vscode": "^1.69.0",
+		  "@types/glob": "^7.2.0",
+		  "@types/mocha": "^9.1.1",
+		  "@types/node": "16.x",
+		  "@typescript-eslint/eslint-plugin": "^5.30.0",
+		  "@typescript-eslint/parser": "^5.30.0",
+		  "eslint": "^8.18.0",
+		  "glob": "^8.0.3",
+		  "mocha": "^10.0.0",
+		  "typescript": "^4.7.4",
+		  "@vscode/test-electron": "^2.1.5"
+	 }
+}
