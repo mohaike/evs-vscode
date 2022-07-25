@@ -18,17 +18,6 @@ get_version()
 }
 evs_version="$(get_version)"
 
-bak_evs()
-{
-    # 拷贝到备份目录
-    echo "拷贝到备份目录"
-    cp "${CURRENT_PATH}/evs-${evs_version}.vsix" "$HOME/.emacs.d/vscode-extension/evs-${evs_version}.vsix"
-    cd "$HOME/.emacs.d"
-    git add "$HOME/.emacs.d/vscode-extension"
-    git commit -m "更新EVS $(date +"%Y-%m-%d %H:%M:%S")"
-    cd -
-}
-
 re_install_evs()
 {
     # 重新安装EVS
@@ -43,7 +32,6 @@ go()
     echo "用vsce打包，没有需要自己安装"
     vsce package
 
-    bak_evs
     re_install_evs
     clean
 }
